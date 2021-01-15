@@ -1,75 +1,51 @@
-import 'dart:io';
-
 import 'core/nis-deductions.dart';
 import 'core/nis-percentage.dart';
 import 'core/pay-back.dart';
 import 'core/total-pay.dart';
 import 'core/worker-Income.dart';
+import 'inputs/data-input.dart';
 import 'models/month.model.dart';
 import 'models/worker.model.dart';
-import 'utils/clearscreen-utils.dart';
+import 'utils/worker-infor.dart';
 
 List<Worker> createWorker({Month month}) {
   final workerList = <Worker>[];
+
   while (true) {
     final worker = Worker();
 
-    if (workerList.isEmpty) {
-      print('-------------------------------------------------------------');
-      print('Enter Workers Information Once Completed just type ( done )');
-      print('-------------------------------------------------------------');
-      print('');
-    }
+    workersListInfor(workerList: workerList);
 
-    if (workerList.isNotEmpty) {
-      clearscreen();
-      print('Once Completed just type ( done ) \n');
-      print('####################################');
-      print('');
-      print('~~~~~~~~~~~~~~~~ Workers List ~~~~~~~~~~~~~~~~~~~~');
-      for (final worker in workerList) {
-        print('${worker.frist_name} ${worker.last_name} Added');
-      }
-      print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
-      print('');
-    }
-
-    print('Enther Worker Frist Name \n');
-    worker.frist_name = stdin.readLineSync();
+    worker.frist_name = dataInput(message: 'Enther Worker Frist Name');
     if (worker.frist_name.toLowerCase() == 'done') {
       break;
     }
-    print('');
 
-    print('Enther ${worker.frist_name} Last Name \n');
-    worker.last_name = stdin.readLineSync();
+    worker.last_name =
+        dataInput(message: 'Enther ${worker.frist_name} Last Name');
     if (worker.last_name.toLowerCase() == 'done') {
       break;
     }
-    print('');
 
-    print(
-        'How manny days did ${worker.frist_name} ${worker.last_name} work in the Month of ${month.month_name} \n');
-    worker.days_work = int.parse(stdin.readLineSync());
+    worker.days_work = int.parse(dataInput(
+        message:
+            'How manny days did ${worker.frist_name} ${worker.last_name} work in the Month of ${month.month_name}'));
     if (worker.days_work.toString().toLowerCase() == 'done') {
       break;
     }
-    print('');
 
-    print('What is ${worker.frist_name} ${worker.last_name} Salary \n');
-    worker.salary = double.parse(stdin.readLineSync());
+    worker.salary = double.parse(dataInput(
+        message: 'What is ${worker.frist_name} ${worker.last_name} Salary'));
     if (worker.salary.toString().toLowerCase() == 'done') {
       break;
     }
-    print('');
 
-    print(
-        'Is ${worker.frist_name} ${worker.last_name} Over the age of 60 (YES or NO) \n');
-    final over_60 = stdin.readLineSync();
+    final over_60 = dataInput(
+        message:
+            'Is ${worker.frist_name} ${worker.last_name} Over the age of 60 (YES or NO)');
     if (over_60.toLowerCase() == 'done') {
       break;
     }
-    print('');
 
     over_60.toLowerCase() == 'yes'
         ? worker.over_60 = true
@@ -99,9 +75,13 @@ List<Worker> createWorker({Month month}) {
       workerIncome: worker.worker_Income.toDouble(),
     ).round();
 
-    if (worker.salary != null) {
+    if (worker.frist_name != null ||
+        worker.last_name != null ||
+        worker.over_60 != null ||
+        worker.salary != null) {
       workerList.add(worker);
     }
   }
+
   return workerList;
 }

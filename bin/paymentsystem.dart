@@ -1,8 +1,10 @@
 import 'create-worker.dart';
 import 'month.dart';
+import 'utils/clearscreen-utils.dart';
 import 'welcome.dart';
 
 void main(List<String> arguments) {
+  clearscreen();
   welcomeMassage();
 
   final monthInfor = month();
