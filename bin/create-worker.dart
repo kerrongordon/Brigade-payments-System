@@ -27,11 +27,21 @@ List<Worker> createWorker({Month month}) {
       break;
     }
 
-    worker.days_work = int.parse(dataInput(
+    final fullmonth = dataInput(
         message:
-            'How manny days did ${worker.frist_name} ${worker.last_name} work for the Month of ${month.month_name}'));
-    if (worker.days_work.toString().toLowerCase() == 'done') {
+            'Did ${worker.frist_name} ${worker.last_name} work for the Full Month of ${month.month_name} ${month.year} (Y)es (N)o');
+    if (fullmonth.toString().toLowerCase() == 'done') {
       break;
+    }
+    if (fullmonth.toLowerCase() == 'y' || fullmonth.toLowerCase() == 'yes') {
+      worker.days_work = month.total_work_day;
+    } else {
+      worker.days_work = int.parse(dataInput(
+          message:
+              'How manny days did ${worker.frist_name} ${worker.last_name} work for the Month of ${month.month_name}'));
+      if (worker.days_work.toString().toLowerCase() == 'done') {
+        break;
+      }
     }
 
     while (worker.days_work > month.total_work_day || worker.days_work < 0) {
@@ -51,12 +61,12 @@ List<Worker> createWorker({Month month}) {
 
     final over_60 = dataInput(
         message:
-            'Is ${worker.frist_name} ${worker.last_name} Over the age of 60 (YES or NO)');
+            'Is ${worker.frist_name} ${worker.last_name} Over the age of 60 (Y)es or (N)o');
     if (over_60.toLowerCase() == 'done') {
       break;
     }
 
-    over_60.toLowerCase() == 'yes'
+    over_60.toLowerCase() == 'yes' || over_60.toLowerCase() == 'y'
         ? worker.over_60 = true
         : worker.over_60 = false;
 
