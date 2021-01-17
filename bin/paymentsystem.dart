@@ -1,3 +1,5 @@
+import 'core/full-payback-withnis.dart';
+import 'core/nis-deductions.dart';
 import 'create-worker.dart';
 import 'month.dart';
 import 'utils/clearscreen-utils.dart';
@@ -25,10 +27,20 @@ void main(List<String> arguments) {
     print('');
   }
 
+  var salaryTotal = workersList.map((e) => e.salary).reduce((a, b) => a + b);
+  var fullNispayment = nidDeductions(totalPay: salaryTotal).round();
   var payBackTotal = workersList.map((e) => e.payBack).reduce((a, b) => a + b);
   var nisTotal =
       workersList.map((e) => e.nis_Deductions).reduce((a, b) => a + b);
 
-  print(payBackTotal);
-  print(nisTotal);
+  var fullPaybackNis = fullPaybackWithNis(
+    fullNispayment: fullNispayment,
+    nisTotal: nisTotal,
+    payBackTotal: payBackTotal,
+  );
+
+  print('++++++++++++++++++++++++++++++++++++++++++++++++++');
+  print('Total Pay Back $fullPaybackNis');
+  print('NIS $nisTotal');
+  print('++++++++++++++++++++++++++++++++++++++++++++++++++');
 }
