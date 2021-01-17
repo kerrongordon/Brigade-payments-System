@@ -1,3 +1,2 @@
-double totalPay({double salary, int monthDays, int workerDays}) {
-  return salary / monthDays * workerDays;
-}
+double totalPay({double salary, int monthDays, int workerDays}) =>
+    salary / monthDays * workerDays;

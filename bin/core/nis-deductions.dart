@@ -1,3 +1,1 @@
-double nidDeductions({double totalPay}) {
-  return totalPay / 100 * 11;
-}
+double nidDeductions({double totalPay}) => totalPay / 100 * 11;

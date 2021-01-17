@@ -1,3 +1,1 @@
-double nisPercentage({double totalPay}) {
-  return totalPay / 100 * 5;
-}
+double nisPercentage({double totalPay}) => totalPay / 100 * 5;

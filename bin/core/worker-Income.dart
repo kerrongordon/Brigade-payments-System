@@ -1,3 +1,2 @@
-double workerIncome({double totalPay, double nisPercentage}) {
-  return totalPay - nisPercentage;
-}
+double workerIncome({double totalPay, double nisPercentage}) =>
+    totalPay - nisPercentage;
