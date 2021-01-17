@@ -27,13 +27,14 @@ void main(List<String> arguments) {
     print('');
   }
 
-  var salaryTotal = workersList.map((e) => e.salary).reduce((a, b) => a + b);
-  var fullNispayment = nidDeductions(totalPay: salaryTotal).round();
-  var payBackTotal = workersList.map((e) => e.payBack).reduce((a, b) => a + b);
-  var nisTotal =
+  final salaryTotal = workersList.map((e) => e.salary).reduce((a, b) => a + b);
+  final fullNispayment = nidDeductions(totalPay: salaryTotal).round();
+  final payBackTotal =
+      workersList.map((e) => e.payBack).reduce((a, b) => a + b);
+  final nisTotal =
       workersList.map((e) => e.nis_Deductions).reduce((a, b) => a + b);
 
-  var fullPaybackNis = fullPaybackWithNis(
+  final fullPaybackNis = fullPaybackWithNis(
     fullNispayment: fullNispayment,
     nisTotal: nisTotal,
     payBackTotal: payBackTotal,
