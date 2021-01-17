@@ -34,7 +34,7 @@ List<Worker> createWorker({Month month}) {
       break;
     }
 
-    while (worker.days_work > month.total_work_day) {
+    while (worker.days_work > month.total_work_day || worker.days_work < 0) {
       worker.days_work = int.parse(dataInput(
           message:
               'There are only ${month.total_work_day} working days in the month of ${month.month_name} how manny days did ${worker.frist_name} ${worker.last_name} work for the Month of ${month.month_name}'));
