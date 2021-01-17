@@ -12,17 +12,17 @@ void main(List<String> arguments) {
   final monthInfor = month();
   final workersList = createWorker(month: monthInfor);
 
+  clearscreen();
+
   if (workersList.isNotEmpty) {
     for (final worker in workersList) {
-      print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
-      print('frist Name: ${worker.frist_name}');
-      print('Last Name: ${worker.last_name}');
+      print('~~~~~~~~~~~ ${worker.frist_name} ${worker.last_name} ~~~~~~~~~~~');
       print('Total Pay: ${worker.total_Pay}');
       print('NIS Deductions: ${worker.nis_Deductions}');
       print('Worker Income: ${worker.worker_Income}');
       print('Pay Back: ${worker.payBack}');
       print('NIS 5%: ${worker.nis_Percentage}');
-      print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
+      print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n');
     }
     print('');
   }
