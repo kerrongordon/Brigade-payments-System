@@ -1,1 +1,6 @@
-double nidDeductions({double totalPay}) => totalPay / 100 * 11;
+double nidDeductions({double totalPay, bool over_60}) {
+  if (over_60 == null) {
+    return totalPay / 100 * 11;
+  }
+  return over_60 ? totalPay / 100 * 1 : totalPay / 100 * 11;
+}

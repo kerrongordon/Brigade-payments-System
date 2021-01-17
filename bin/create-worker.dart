@@ -59,10 +59,12 @@ List<Worker> createWorker({Month month}) {
 
     worker.nis_Deductions = nidDeductions(
       totalPay: worker.total_Pay.toDouble(),
+      over_60: worker.over_60,
     ).round();
 
     worker.nis_Percentage = nisPercentage(
       totalPay: worker.total_Pay.toDouble(),
+      over_60: worker.over_60,
     ).round();
 
     worker.worker_Income = workerIncome(
